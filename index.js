@@ -111,4 +111,4 @@ console.log(ARRAY_DEMO_1);
 console.log(Object.keys(ARRAY_DEMO_1))
 
 console.log('4.ssd1ss:'.replace(/\D/g, ''))
-console.log('4:'.replace(/\d/g, ''))
+console.log('4DADadADadDadADad DdDad D:'.replace(/\d/g, ''))
