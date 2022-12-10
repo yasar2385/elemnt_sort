@@ -108,7 +108,88 @@ ARRAY_DEMO.sort(function (a, b) {
 });
 //console.log(ARRAY_DEMO);
 console.log(ARRAY_DEMO_1);
-console.log(Object.keys(ARRAY_DEMO_1))
+console.log(Object.keys(ARRAY_DEMO_1));
 
-console.log('4.ssd1ss:'.replace(/\D/g, ''))
-console.log('4DADadADadDadADad DdDad D:'.replace(/\d/g, ''))
+console.log('4.ssd1ss:'.replace(/\D/g, ''));
+console.log('4DADadADadDadADad DdDad D:'.replace(/\d/g, ''));
+
+let VALID_ID_IGNORE = function (id) {
+  try {
+    if (typeof id != 'string') id = id.id;
+    return ![' ', '', 'null', 'undefined', null, undefined].includes(id);
+  } catch (err) {
+    console.warn(err.message);
+    ErrorLogTrace('VALID_ID_IGNORE', err.message);
+  }
+};
+
+let get_new_id = function (idx, dom) {
+  try {
+    idx++;
+    let find = idx.toString().getBibId();
+    while (dom.querySelector(`[id="${find}"]`)) {
+      idx++;
+      find = idx.toString().getBibId();
+    }
+    return {
+      lab: idx,
+      id: find,
+    };
+  } catch (err) {
+    console.warn(err.message);
+    ErrorLogTrace('get_new_id', err.message);
+  }
+};
+
+function get_id(e) {
+  try {
+    let rValue = VALID_ID_IGNORE(e.id)
+      ? e.id
+      : e.hasAttribute('del_id')
+      ? e.getAttribute('del_id')
+      : /* e.hasAttribute('oid') ? e.getAttribute('oid') : */ '';
+    //console.log(rValue);
+    return rValue;
+  } catch (err) {
+    console.warn(err.message);
+    ErrorLogTrace('get_id', err.message);
+  }
+}
+
+function sorterd(a, b) {
+  try {
+    let [a_val, b_val] = [
+      parseInt(get_id(a).replace(/\D/g, '')),
+      parseInt(get_id(b).replace(/\D/g, '')),
+    ];
+    console.log([a_val, b_val]);
+    if (a_val > b_val) return 1;
+    if (a_val < b_val) return -1;
+    return 0;
+    // return a_val.localeCompare(b_val);
+  } catch (err) {
+    console.warn(err.message);
+    ErrorLogTrace('sorter', err.message);
+  }
+}
+var refSec = document.getElementById('r1');
+var categoryItems = refSec.querySelectorAll('div.ref');
+var categoryItemsArray = Array.from(categoryItems);
+var sortedOne = categoryItemsArray.sort(sorterd);
+console.log(sortedOne);
+sortedOne.forEach(function (e) {
+  refSec.appendChild(e);
+});
+
+function get_text(Item) {
+  [].reduce.call(
+    Item.childNodes,
+    function (a, b) {
+      return a + (b.nodeType === 3 ? b.textContent : '');
+    },
+    ''
+  );
+}
+
+console.log(document.getElementsByTagName('span.TEX'));
+//get_text(document.getElementsByTagName('insert'));
