@@ -1,5 +1,6 @@
 // Import stylesheets
 import './style.css';
+import '~bootstrap/dist/css/bootstrap.min.css';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
