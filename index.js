@@ -194,3 +194,91 @@ function get_text(Item) {
 
 console.log(document.getElementsByTagName('span.TEX'));
 //get_text(document.getElementsByTagName('insert'));
+var Order = [
+  'client',
+  'identifier',
+  'docid',
+  'proof_to_auth',
+  'proof_close_auth',
+  'stage_internal',
+  'type',
+  'link_workflow',
+  'status',
+];
+var Obj_1 = [
+  {
+    colId: 'proof_to_auth',
+    headerName: 'Proof Sent',
+    filter: 'agDateColumnFilter',
+    filterParams: {
+      browserDatePicker: true,
+    },
+  },
+  {
+    colId: 'proof_close_auth',
+    headerName: 'Proof Completed',
+    filter: 'agDateColumnFilter',
+    filterParams: {
+      browserDatePicker: true,
+    },
+  },
+  {
+    colId: 'stage_internal',
+    headerName: 'Current Stage',
+    filter: 'agTextColumnFilter',
+    chartDataType: 'series',
+  },
+  {
+    colId: 'proof_to_coll',
+    headerName: 'Collection Sent',
+    initialSort: 'asc',
+    filter: 'agDateColumnFilter',
+    filterParams: {
+      browserDatePicker: true,
+    },
+  },
+  {
+    colId: 'proof_close_coll',
+    headerName: 'Collection Completed',
+    filter: 'agDateColumnFilter',
+    filterParams: {
+      browserDatePicker: true,
+    },
+  },
+  {
+    field: 'client',
+    headerName: 'Client',
+    resizable: true,
+    headerClass: 'fixed-size-header',
+  },
+  {
+    tooltipField: 'identifier',
+    tooltipComponentParams: {
+      color: '#ececec',
+    },
+    field: 'identifier',
+    headerName: 'DOI',
+    resizable: true,
+    headerClass: 'fixed-size-header',
+  },
+  {
+    field: 'docid',
+    headerName: 'DOC ID',
+    resizable: true,
+    headerClass: 'fixed-size-header',
+  },
+  {
+    field: 'type',
+    headerName: 'Type',
+  },
+  {
+    field: 'workflow',
+    colId: 'link_workflow',
+    headerName: 'WorkFlow',
+    maxWidth: 135,
+  },
+  {
+    field: 'status',
+    headerName: 'Status',
+  },
+];
